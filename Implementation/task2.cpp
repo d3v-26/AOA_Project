@@ -8,19 +8,20 @@ auto GreedySingleMaxProfit(vector<int> A, int n)
     int leastSoFar = 10000;
     int profit = 0;
     int currentProfit = 0;
-    int buy = 0, sell = 0;
+    int buy = 0, sell = 0, minIndex = 0;
 
     for(int i = 0; i < n; i++)
     {
         if(A[i] < leastSoFar)
         {
             leastSoFar = A[i];
-            buy = i;
+            minIndex = i;
         }
         currentProfit = A[i] - leastSoFar;
         if(currentProfit > profit)
         {
             profit = currentProfit;
+            buy = minIndex;
             sell = i;
         }
     }
