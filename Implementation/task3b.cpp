@@ -2,44 +2,26 @@
 
 using namespace std;
 
-auto DPBottomUp(vector<int> A, int n)
+int DPBottomUp(vector<int> A, int index, int minPrice, int profit, int* buy, int *sell)
 {
-    struct result { int profit, buy, sell; };
-    
-    int profit = 0, buy = 0, sell = 0;
-    
-    int *dp = new int[n];       // This array maintains to the date what is the min stock price
-    int *buyarr = new int[n];   // This array maintains the index of the min stock price to the date
-    
-    dp[0] = A[0];   // Base case i.e. first date price is min on the first date
-    buyarr[0] = 0;  // Base case i.e. index of the min first date price
-    
-    for(int i = 1; i < n; i++)  // Following `for` loop computes the min stock price to the date array
+    if( index >= A.size() || index < 0)
     {
-        if(A[i] < dp[i-1])
-        {
-            dp[i] = A[i];
-            buyarr[i] = i;
-        }
-        else
-        {
-            dp[i] = dp[i-1];
-            buyarr[i] = buyarr[i-1];
-        }
+        return profit;
+    }
+    int currentProfit = A[index] - minPrice;
+    if(profit < currentProfit)
+    {
+        *sell = index;
+        profit = currentProfit;
     }
 
-    for(int i = 0; i < n; i++)  // Following `for` loop computes max profit using dp array
+    if(minPrice > A[index])
     {
-        int currentProfit = A[i] - dp[i];
-        if(profit < currentProfit)
-        {
-            sell = i;
-            profit = currentProfit;
-            buy = buyarr[i];
-        }
+        minPrice = A[index];
+        *buy = index;
     }
-    
-    return result { profit, buy, sell };
+
+    return max(profit, DPMemoization(A, index+1, minPrice, profit, buy, sell));
 }
 
 auto Task3B(vector<vector<int>> A, int m, int n)
@@ -49,12 +31,10 @@ auto Task3B(vector<vector<int>> A, int m, int n)
     int buy = 0, sell = 0, index = 0;
     for(int i = 0; i < m; i++)
     {
-        auto result = DPBottomUp(A[i], n);
-        if(result.profit > profit)
+        int result = DPBottomUp(A[i], 1, A[i][0], 0, &buy, &sell);
+        if(result > profit)
         {
-            profit = result.profit;
-            buy = result.buy;
-            sell = result.sell;
+            profit = result;
             index = i;
         }
     }
