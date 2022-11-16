@@ -1,60 +1,88 @@
-
 #include <bits/stdc++.h>
 
 using namespace std;
 
 struct transaction { int stock, buy, sell, profit; };
-vector<transaction> dp(vector<vector<int>> &A, int m, int n, int k)
-{
+tuple<int, int, int> **OPT;
 
-    tuple<int, int, int> **OPT = new tuple<int, int, int> *[k+1];   //new three dimensional array => opt[k+1][][]
+void print(tuple<int, int, int> **OPT, int k, int n)
+{
+    for(int i = 0; i < k; i++)
+    {
+        for(int j = 0; j < n; j++)
+        {
+            cout<< "OPT["<<i<<"]["<<j<<"] = " << get<0>(OPT[i][j]) << " " << get<1>(OPT[i][j]) << " " << get<2>(OPT[i][j]) << endl;
+        }
+    }
+}
+
+tuple<int, int, int> rec(vector<vector<int>> A, tuple<int, int, int> **OPT, tuple<int,int> **diffSoFar, int T, int D, int m)
+{
+    if(get<1>(OPT[T][D]) != -1) return OPT[T][D];
+    if(T <= 0 || D <= 0)
+    {
+        OPT[T][D] = make_tuple(0, 0, 0);
+        return OPT[T][D];
+    }
+
+    if(T > D)
+    {
+        OPT[T][D] = rec(A, OPT, diffSoFar, T-1, D, m);
+    }
+    else
+    {
+        tuple<int, int, int> maxIfNoTransaction = rec(A, OPT, diffSoFar, T, D-1, m);
+        int maxProfit = get<0>(maxIfNoTransaction);
+        int stock = get<1>(maxIfNoTransaction);
+        int buy = get<2>(maxIfNoTransaction);
+
+        int maxIfTransaction = get<0>(rec(A, OPT, diffSoFar, T-1, D-1, m));
+
+        for(int i = 0; i < m; i++)
+        {
+            int diff = maxIfTransaction - A[i][D-1];
+            if( diff > get<0>(diffSoFar[T][i]))
+            {
+                diffSoFar[T][i] = make_tuple(diff, D-1);
+            }
+
+            int profit = A[i][D] + get<0>(diffSoFar[T][i]);
+            if(maxProfit < profit)
+            {
+                maxProfit = profit;
+                stock = i;
+                buy = get<1>(diffSoFar[T][i]);
+            }
+        }
+        OPT[T][D] = make_tuple(maxProfit, stock, buy);
+    }
+    return OPT[T][D];
+}
+vector<transaction> dp(vector<vector<int>> A, int m, int n, int k)
+{
+    tuple<int, int, int> **OPT = new tuple<int, int, int> *[k+1];
 
     for(int i = 0; i < k+1; i++)
     {
-        OPT[i] = new tuple<int, int, int>[n];     // opt[k+1][n][]
-        OPT[i][0] = make_tuple(0, -1, -1);       // opt[k+1][n][0] = [0,-1,-1]
-        if(i == 0)
+        OPT[i] = new tuple<int, int, int>[n];
+        for(int j = 0; j < n; j++)
         {
-            for(int j = 0; j < n; j++) 
-            {
-                OPT[i][j] = make_tuple(0, -1, -1);    //initalize the edges in matrix as zero 
-            }
+            OPT[i][j] = make_tuple(0, -1, -1);
         }
     }
 
-    for(int i = 1; i < k+1; i++)
+    tuple<int, int> **diffSoFar = new tuple<int, int> *[k+1];
+    for(int i = 0; i < k+1; i++)
     {
-        vector<tuple<int, int>> diffSoFar(m, make_tuple(INT_MIN, 0));
-        for(int j = 1; j < n; j++)
+        diffSoFar[i] = new tuple<int, int> [m];
+        for(int j = 0; j < m; j++)
         {
-            if(i > j)
-            {
-                OPT[i][j] = OPT[i-1][j];
-                continue;
-            }
-            int maxProfit = get<0>(OPT[i][j-1]);
-            int stock = -1;
-            int buyDay = -1;
-            for(int p = 0; p < m; p++)
-            {
-                                                               //here i = transactions, j = days, p= stocks
-                int diff = get<0>(OPT[i-1][j-1]) - A[p][j-1];  //buying stock p at day j and doing i th transaction
-                if(diff > get<0>(diffSoFar[p]))                //comparing profit for stock p with greatest profit earned by other stocks
-                {
-                    diffSoFar[p] = make_tuple(diff, j-1);        
-                }
-                int profit = A[p][j] + get<0>(diffSoFar[p]);   //calculating profit made by doing transaction to already calculated profit for stock p at day j 
-                if(maxProfit < profit)
-                {
-                    maxProfit = profit;
-                    stock = p;
-                    buyDay = get<1>(diffSoFar[p]);
-                }
-            }
-            OPT[i][j] = make_tuple(maxProfit, stock, buyDay);   // adding maximum profit earned by doing transaction with stock p on particular day
+            diffSoFar[i][j] = make_tuple(INT_MIN, 0);
         }
     }
 
+    rec(A, OPT, diffSoFar, k, n-1, m);
+    //print(OPT, k+1, n);
     vector<transaction> result;
 
     int i = k;
@@ -70,10 +98,10 @@ vector<transaction> dp(vector<vector<int>> &A, int m, int n, int k)
         {
             auto profit = get<0>(current);
             auto stock = get<1>(current);
-            auto buyDay = get<2>(current);
-            result.push_back(transaction {stock, buyDay, j, A[stock][j] - A[stock][buyDay]});
+            auto buy = get<2>(current);
+            result.push_back(transaction {stock, buy, j, A[stock][j] - A[stock][buy]});
             i--;
-            j = buyDay;
+            j = buy;
         }
     }
 
@@ -94,7 +122,7 @@ int main()
             cin >> A[i][j];
         }
     }
-
+    //dp(A, m, n, k);
     vector<transaction> transactions = dp(A, m, n, k);
 
     for(auto t : transactions)
