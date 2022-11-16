@@ -1,0 +1,113 @@
+(base) chintanacharya@Chintans-MacBook-Pro Implementation % make task3b
+c++     task3b.cpp   -o task3b
+(base) chintanacharya@Chintans-MacBook-Pro Implementation % ./task3b
+Name of file: M1
+M: 20
+N: 20000
+Time Elapsed : 43.6216 seconds
+Profit :1999948
+Stock No: 8
+Buy: 11765
+Sell:12073
+
+
+(base) chintanacharya@Chintans-MacBook-Pro Implementation % ./task3b   
+Name of file: M2
+M: 40
+N: 20000
+Time Elapsed : 85.5608 seconds
+Profit :1999990
+Stock No: 19
+Buy: 7268
+Sell:12190
+
+
+(base) chintanacharya@Chintans-MacBook-Pro Implementation % ./task3b
+Name of file: M3
+M: 60
+N: 20000
+Time Elapsed : 132.943 seconds
+Profit :1999969
+Stock No: 24
+Buy: 4391
+Sell:7268
+
+
+(base) chintanacharya@Chintans-MacBook-Pro Implementation % ./task3b
+Name of file: M4
+M: 80
+N: 20000
+Time Elapsed : 181.798 seconds
+Profit :1999989
+Stock No: 2
+Buy: 2913
+Sell:12771
+
+
+(base) chintanacharya@Chintans-MacBook-Pro Implementation % ./task3b
+Name of file: M5
+M: 100
+N: 20000
+Time Elapsed : 219.007 seconds
+Profit :1999988
+Stock No: 45
+Buy: 1448
+Sell:14507
+
+
+(base) chintanacharya@Chintans-MacBook-Pro Implementation % ./task3b
+Name of file: N1
+M: 50
+N: 5000
+Time Elapsed : 6.76761 seconds
+Profit :1999882
+Stock No: 46
+Buy: 3970
+Sell:2368
+
+
+(base) chintanacharya@Chintans-MacBook-Pro Implementation % ./task3b
+Name of file: N2
+M: 50
+N: 10000
+Time Elapsed : 29.0665 seconds
+Profit :1999900
+Stock No: 2
+Buy: 3642
+Sell:8500
+
+
+(base) chintanacharya@Chintans-MacBook-Pro Implementation % ./task3b
+Name of file: N3
+M: 50
+N: 15000
+Time Elapsed : 58.7788 seconds
+Profit :1999975
+Stock No: 46
+Buy: 912
+Sell:8096
+
+
+(base) chintanacharya@Chintans-MacBook-Pro Implementation % ./task3b
+Name of file: N4
+M: 50
+N: 20000
+Time Elapsed : 107.069 seconds
+Profit :1999968
+Stock No: 47
+Buy: 18419
+Sell:12538
+
+
+(base) chintanacharya@Chintans-MacBook-Pro Implementation % ./task3b
+Name of file: N5
+M: 50
+N: 25000
+Time Elapsed : 174.721 seconds
+Profit :1999982
+Stock No: 48
+Buy: 10682
+Sell:19599
+
+
+(base) chintanacharya@Chintans-MacBook-Pro Implementation % 
