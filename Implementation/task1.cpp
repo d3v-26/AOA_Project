@@ -1,10 +1,14 @@
-#include <bits/stdc++.h>
+#include <vector>
+#include <iostream>
 
 using namespace std;
 
-auto SingleMaxProfit(vector<int> A, int n) 
+struct result { int profit, buy, sell; };
+struct result2 { int profit, buy, sell, index; };
+
+result SingleMaxProfit(vector<int> A, int n) 
 { 
-    struct result { int profit, buy, sell; };
+    result r;
     int profit = 0;
     int buy = 0, sell = 0;
     for(int i = 0; i < n; i++)
@@ -20,34 +24,41 @@ auto SingleMaxProfit(vector<int> A, int n)
             }
         }
     }
-
-    return result {profit, buy, sell};
+    r.profit = profit;
+    r.buy = buy;
+    r.sell = sell;
+    return r;
 }
 
-auto Task1(vector<vector<int>> A, int m, int n) {
-    struct result { int profit, buy, sell, index; };
+result2 Task1(vector<vector<int> > A, int m, int n) {
+    
     int profit = 0;
     int buy = 0, sell = 0, index = 0;
     for (int i = 0; i < m; i++) 
     {
-        auto result = SingleMaxProfit(A[i], n);
-        if(result.profit > profit) 
+        result r = SingleMaxProfit(A[i], n);
+        if(r.profit > profit) 
         {
-            profit = result.profit;
-            buy = result.buy;
-            sell = result.sell;
+            profit = r.profit;
+            buy = r.buy;
+            sell = r.sell;
             index = i;
         }
     }
+    result2 r1;
+    r1.profit = profit;
+    r1.buy = buy;
+    r1.sell = sell;
+    r1.index = index;
 
-    return result {profit, buy, sell, index};
+    return r1;
 }
 
 int main() {
     int m, n;
     cin >> m >> n;
 
-    vector<vector<int>> A(m, vector<int> (n, 0));
+    vector<vector<int> > A(m, vector<int> (n, 0));
     for (int i = 0; i < m; i++) 
     {
         for (int j = 0; j < n; j++) 
@@ -56,6 +67,6 @@ int main() {
         }
     }
 
-    auto result = Task1(A, m, n);
-    cout << result.index << " " << result.buy << " " << result.sell << endl;
+    result2 result = Task1(A, m, n);
+    cout << "Profit :" <<result.profit <<endl << "Stock No: " << result.index <<endl << "Buy: " << result.buy <<endl << "Sell:" << result.sell <<endl;
 }
