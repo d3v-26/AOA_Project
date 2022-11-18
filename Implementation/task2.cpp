@@ -94,7 +94,7 @@ int main()
         }
     }
 
-    transaction result = Task2(A, m, n); // Get the result of Task1
+    transaction result = Task2(A, m, n); // Get the result of Task2
     
     // Print the output as a single line with three integers (Stock, BuyDay, SellDay) separated by a single space.
     cout << result.stock << " " << result.buy << " " << result.sell << endl; 
