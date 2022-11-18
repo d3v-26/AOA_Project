@@ -2,42 +2,93 @@
 
 using namespace std;
 
-vector <int> MaxProfit;
-
-int opt(vector<vector<int>> &A, int M, int N, int C,int buy)
+struct transaction
 {
-    int optA,optB;
-    if(A[0].size()<=N){
-        return 0;
+    int stock, profit, buy, sell;
+};
+
+int totalProfit(vector<transaction> T)
+{
+    int profit = 0;
+    for(auto t : T)
+    {
+        profit += t.profit;
     }
-    if(buy==-1){
-       optA = opt(A,M,N+1,C,buy);                // no transcation
-       optB = opt(A,M,N+1,C,N) - A[M][N];        // buying stock M at i(th) day
-       
-    }
-    else{
-       
-       optA = opt(A,M,N+1,C,buy);                //no transcation
-       optB = opt(A,M,N+C+1,C,-1) + A[M][N];     //selling stock M at i(th) day
-       if(buy>0)
-       {
-           MaxProfit[N]=max(MaxProfit[N],(A[M][N]-A[M][buy] + MaxProfit[min(max(0,N-C-1),max(0,buy-C-1))]));
-       }
-       else if(buy==0)
-       {
-            MaxProfit[N]=max(MaxProfit[N],(A[M][N]-A[M][buy] + 0));
-       }
-    }
-    
-    return max(optA,optB);
+    return profit;
 }
 
-
-int main()
+void print(vector<transaction> T)
 {
-    int c, n, m;
-    cin >>c>> m >> n;
+    for(auto t : T)
+    {
+        cout << t.stock << " " << t.profit << " " << t.buy << " " << t.sell << endl;
+    }
+}
+
+bool compare(transaction t1, transaction t2)
+{
+    if(t1.buy <= t2.buy) return true;
+    else return false;
+}
+
+vector<transaction> BruteForce2n(vector<vector<int>> A, int current, int S, int D, bool buy, int c)
+{
+    if(current >= A[0].size())
+    {
+        vector<transaction> T;
+        return T;
+    }
+
+    if(buy)
+    {
+        // Here we can buy stock
+        // What is the max profit if we don't buy a stock on current day?
+        vector<transaction> T = BruteForce2n(A, current+1, -1, -1, buy, c);
+
+        // What is the max profit if we do buy a stock on current day?
+        vector<transaction> C;   
+        for(int i = 0; i < A.size(); i++)
+        {
+            vector<transaction> T1 = BruteForce2n(A, current+1, i, current, false, c);
+            if(totalProfit(C) < totalProfit(T1))
+            {
+                C = T1;
+            }
+        }
+
+        // Return the max profit of the two
+        if(totalProfit(C) > totalProfit(T)) return C;
+        return T;
+    }
+    else
+    {
+        // Here a stock is already bought, so we have two choices either sell a stock or we don't
+        // What is the max profit if we don't sell the bought stock on current day?
+        vector<transaction> T = BruteForce2n(A, current+1, S, D, false, c);
+
+        // What is the max profit if we do sell the bought stock on current day?
+        vector<transaction> C = BruteForce2n(A, current+c+1, -1, -1, true, c);
+        
+        // A transaction has occured so we do need to add the said transaction to the result C
+        C.push_back(transaction {S, A[S][current] - A[S][D], D, current});
+
+        if(totalProfit(T) > totalProfit(C)) return T;
+        return C;
+    }
     
+}
+
+vector<transaction> Task7(vector<vector<int>> A, int m, int n, int c)
+{
+    vector<transaction> result = BruteForce2n(A, 0, -1, -1, true, c);
+    sort(result.begin(), result.end(), compare);
+    return result;
+}
+
+int main() {
+    int m, n, c;
+    cin >> c >> m >> n;
+
     vector<vector<int>> A(m, vector<int> (n, 0));
     for (int i = 0; i < m; i++) 
     {
@@ -46,23 +97,13 @@ int main()
             cin >> A[i][j];
         }
     }
-    for (int i = 0; i < n; i++)
+
+    vector<transaction> result = Task7(A, m, n, c);
+
+    for(auto r : result)
     {
-        MaxProfit.push_back(0);
+        cout<<r.stock<<" "<<r.buy<<" "<<r.sell<<endl;
     }
-    for(int i=0;i<m;i++)
-    {
-        opt(A, i, 0, c,-1);
-    }
-    for(int i=0;i<m;i++)    
-    {
-        opt(A, i, 0, c,-1);
-    }
-    int maximum=0;
-    for(int i=0;i<n;i++)
-    {
-        maximum=max(maximum,MaxProfit[i]);
-        
-    }
-    cout<<maximum<<endl;
+
+    return 0;
 }

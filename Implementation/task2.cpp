@@ -1,140 +1,101 @@
-#include <vector>
-#include <iostream>
-#include <fstream>
-#include <sstream>
-#include <time.h>
+#include <bits/stdc++.h>
 
 using namespace std;
 
-struct result
+// Structure that describes a Transaction
+struct transaction
 {
-    int profit, buy, sell;
-};
-struct result2
-{
-    int profit, buy, sell, index;
+    /**
+     * @param stock  int - Index of the stock that corresponds to this Transaction.
+     * @param profit int - Profit of the Transaction.
+     * @param buy    int - Index of the `Day` that we `buy` the stock `stock`
+     * @param sell   int - Index of the `Day` that we `sell` the stock `stock`
+     */
+    int stock, profit, buy, sell;
 };
 
-result GreedySingleMaxProfit(vector<int> A, int n)
+/**
+ *   Greedy Algorithm that has time complexity in order of n
+ *   Computes and returns a transaction that yields maximum profit for the given stock
+ *
+ *   @param  A vector<int> - Vector containing prices of a stock
+ *   @param  n int         - Number of Days
+ *   @return _ transaction - A single transaction that has most profit
+ */
+transaction GreedySingleMaxProfit(vector<int> A, int n)
 {
-    result r;
-    int leastSoFar = 10000;
-    int profit = 0;
-    int currentProfit = 0;
-    int buy = 0, sell = 0, minIndex = 0;
+    int leastSoFar = 10000;                          // leastSoFar keeps track of the least value of price of a stock encountered till the date
+    int profit = 0, buy = 0, sell = 0, inx = 0;      // Variables to keep track of Max Profit
 
-    for (int i = 0; i < n; i++)
+    for(int i = 0; i < n; i++)                       // Iterate over the days `n`
     {
-        if (A[i] <= leastSoFar)
+        if(A[i] < leastSoFar)                        // If current day has low price that leastSoFar than updated leastSoFar
         {
             leastSoFar = A[i];
-            minIndex = i;
+            inx = i;                                 // Store the index of lowest price
         }
-        currentProfit = A[i] - leastSoFar;
-        if (currentProfit >= profit)
+        int currentProfit = A[i] - leastSoFar;       // Calculate current profit i.e. Current Price - leastSoFar
+        if(currentProfit > profit)                   // If Current Profit is greater than every profit encountered so far update profit
         {
             profit = currentProfit;
-            buy = minIndex;
-            sell = i;
+            sell = i;                                // Store the index of Sell day which has Max profit
+            buy = inx;                               // Store the index of buy day which is the index of value that is leastSoFar i.e. inx
         }
     }
 
-    r.profit = profit;
-    r.buy = buy;
-    r.sell = sell;
-    return r;
+    return transaction { -1, profit, buy, sell}; // Return the transaction that has max profit.
 }
 
-result2 Task2(vector<vector<int>> A, int m, int n)
+/**
+ *   Task 2 of the project. Time Complexity is in order of m*n.
+ *   Computes and returns a transaction that yields maximum profit for all given stocks.
+ *   It is the implementation of ALG2 of the programming project.
+ *
+ *   @param  A vector<vector<int>> - a `m x n` stock where A[i][j] = Price of stock `i` at `jth` day 
+ *   @param  m int                 - Number of Stocks
+ *   @param  n int                 - Number of Days
+ *   @return _ transaction         - A single transaction that has most profit
+ */
+transaction Task2(vector<vector<int>> A, int m, int n)
 {
-    int profit = 0;
-    int buy = 0, sell = 0, index = 0;
-    for (int i = 0; i < m; i++)
+    int profit = 0, buy = 0, sell = 0, stock = 0;               // Variables to keep track of Max Profit
+    for (int i = 0; i < m; i++)                                 // Iterate over all stocks
     {
-        result r = GreedySingleMaxProfit(A[i], n);
-        if (r.profit >= profit)
+        transaction result = GreedySingleMaxProfit(A[i], n);    // Get Max Transaction in each stock
+        if(result.profit > profit)                              // Store the Max transaction encountered till now
         {
-            profit = r.profit;
-            buy = r.buy;
-            sell = r.sell;
-            index = i;
+            profit = result.profit;
+            buy = result.buy;
+            sell = result.sell;
+            stock = i;
         }
     }
 
-    result2 r1;
-    r1.profit = profit;
-    r1.buy = buy;
-    r1.sell = sell;
-    r1.index = index;
-
-    return r1;
+    return transaction {stock, profit, buy, sell};              // Return the transaction that has Max profit for all `m` stocks
 }
 
-int main()
+// Main method
+int main() 
 {
+    /**
+     *  Get the inputs `m`, `n` & `A` which are specified as below:
+     *  m, n - First line contains two integers m & n separated by a single space
+     *  A    - Next m lines each contains of n integers (prices for n days) separated by a single space.
+     */
     int m, n;
-
-    // vector<vector<int> > A;
-    // cout << "Name of file: ";
-    // string name;
-    // cin >> name;
-    // std::ifstream infile("../TestCases/TestCase" + name + ".txt");
-    // string line;
-    // int count = 0;
-    // while (std::getline(infile, line))
-    // {
-    //     std::istringstream iss(line);
-    //     if (count < 1)
-    //     {
-    //         iss >> m >> n;
-    //         cout << "M: " << m << endl;
-    //         cout << "N: " << n << endl;
-    //     }
-    //     for (int i = 0; i < m; i++)
-    //     {
-    //         vector<int> temp;
-    //         for (int j = 0; j < n; j++)
-    //         {
-    //             int k = 0;
-    //             infile >> k;
-    //             temp.push_back(k);
-    //         }
-    //         A.push_back(temp);
-    //     }
-    //     count++;
-    // }
-    // clock_t t;
-    // t = clock();
-    // t = clock() - t;
-    // result2 res = Task2(A, m, n);
-    // t = clock() - t;
-    // cout << "Time Elapsed : " << (float)t / CLOCKS_PER_SEC << " seconds" << endl;
-    // cout << "Profit :" << res.profit << endl
-    //      << "Stock No: " << res.index << endl
-    //      << "Buy: " << res.buy << endl
-    //      << "Sell:" << res.sell << endl;
-    // cout << endl
-    //      << endl;
-
     cin >> m >> n;
-    vector<vector<int>> A(m, vector<int>(n, 0));
-    for (int i = 0; i < m; i++)
+
+    vector<vector<int>> A(m, vector<int> (n, 0));
+    for (int i = 0; i < m; i++) 
     {
-        for (int j = 0; j < n; j++)
+        for (int j = 0; j < n; j++) 
         {
             cin >> A[i][j];
         }
     }
 
-    clock_t t;
-    int f;
-    t = clock();
-    t = clock() - t;
-    result2 result = Task2(A, m, n);
-    t = clock() - t;
-    cout << "Time Elapsed : " << (float)t / CLOCKS_PER_SEC << " seconds" << endl;
-    cout << "Profit :" << result.profit << endl
-         << "Stock No: " << result.index << endl
-         << "Buy: " << result.buy << endl
-         << "Sell:" << result.sell << endl;
+    transaction result = Task2(A, m, n); // Get the result of Task1
+    
+    // Print the output as a single line with three integers (Stock, BuyDay, SellDay) separated by a single space.
+    cout << result.stock << " " << result.buy << " " << result.sell << endl; 
 }
