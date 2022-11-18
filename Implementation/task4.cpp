@@ -33,7 +33,7 @@ bool compare(transaction t1, transaction t2)
 
 vector<transaction> chooseK(vector<transaction> T, vector<transaction> R, int index, int k)
 {
-    if(k < 0 || index > T.size()-1){
+    if(k == 0 || index > T.size()-1){
         return R;
     } 
     transaction current = T[index];
