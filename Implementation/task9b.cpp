@@ -89,7 +89,7 @@ int main()
     vector<vector<int>> A(m, vector<int> (n, 0));
     vector<vector<int>> DP(m, vector<int> (n, 0));
     vector<vector<int>> Buy(m, vector<int> (n, 0));
-    vector<vector<int>> MaxProfit(m, vector<int> (2, 0));
+    vector<vector<int>> MaxProfit(m, vector<int> (2, INT_MIN));
     for (int i = 0; i < m; i++) 
     {
         for (int j = 0; j < n; j++) 
