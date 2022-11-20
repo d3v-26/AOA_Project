@@ -2,26 +2,26 @@
 
 using namespace std;
 
-
-// Structure that describes a Transaction
+/**
+ * Structure that describes a Transaction
+ * 
+ * @param stock  int - Index of the stock that corresponds to this Transaction.
+ * @param profit int - Profit of the Transaction.
+ * @param buy    int - Index of the `Day` that we `buy` the stock `stock`
+ * @param sell   int - Index of the `Day` that we `sell` the stock `stock`
+ */
 struct transaction
 {
-    /**
-     * @param stock  int - Index of the stock that corresponds to this Transaction.
-     * @param profit int - Profit of the Transaction.
-     * @param buy    int - Index of the `Day` that we `buy` the stock `stock`
-     * @param sell   int - Index of the `Day` that we `sell` the stock `stock`
-     */
     int stock, profit, buy, sell;
 };
 
 /**
- *   Brute Force Algorithm that has time complexity in order of n^2
- *   Computes and returns a transaction that yields maximum profit for the given stock
+ *   Brute Force Algorithm that has time complexity in order of n^2.
+ *   Computes and returns a transaction that yields maximum profit for the given stock.
  *
  *   @param  A vector<int> - Vector containing prices of a stock
  *   @param  n int         - Number of Days
- *   @return _ transaction - A single transaction that has most profit
+ *   @return   transaction - A single transaction that has most profit
  */
 transaction BruteForceN2(vector<int> A, int n) 
 { 
@@ -52,7 +52,7 @@ transaction BruteForceN2(vector<int> A, int n)
  *   @param  A vector<vector<int>> - a `m x n` stock where A[i][j] = Price of stock `i` at `jth` day 
  *   @param  m int                 - Number of Stocks
  *   @param  n int                 - Number of Days
- *   @return _ transaction         - A single transaction that has most profit
+ *   @return   transaction         - A single transaction that has most profit
  */
 transaction Task1(vector<vector<int>> A, int m, int n) 
 {
@@ -77,7 +77,7 @@ int main()
 {
     /**
      *  Get the inputs `m`, `n` & `A` which are specified as below:
-     *  m, n - First line contains two integers m & n separated by a single space
+     *  m, n - First line contains two integers m & n separated by a single space.
      *  A    - Next m lines each contains of n integers (prices for n days) separated by a single space.
      */
     int m, n;

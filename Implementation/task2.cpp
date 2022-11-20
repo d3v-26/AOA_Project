@@ -2,15 +2,16 @@
 
 using namespace std;
 
-// Structure that describes a Transaction
+/**
+ * Structure that describes a Transaction
+ * 
+ * @param stock  int - Index of the stock that corresponds to this Transaction.
+ * @param profit int - Profit of the Transaction.
+ * @param buy    int - Index of the `Day` that we `buy` the stock `stock`
+ * @param sell   int - Index of the `Day` that we `sell` the stock `stock`
+ */
 struct transaction
 {
-    /**
-     * @param stock  int - Index of the stock that corresponds to this Transaction.
-     * @param profit int - Profit of the Transaction.
-     * @param buy    int - Index of the `Day` that we `buy` the stock `stock`
-     * @param sell   int - Index of the `Day` that we `sell` the stock `stock`
-     */
     int stock, profit, buy, sell;
 };
 
@@ -20,7 +21,7 @@ struct transaction
  *
  *   @param  A vector<int> - Vector containing prices of a stock
  *   @param  n int         - Number of Days
- *   @return _ transaction - A single transaction that has most profit
+ *   @return   transaction - A single transaction that has most profit
  */
 transaction GreedySingleMaxProfit(vector<int> A, int n)
 {
@@ -54,7 +55,7 @@ transaction GreedySingleMaxProfit(vector<int> A, int n)
  *   @param  A vector<vector<int>> - a `m x n` stock where A[i][j] = Price of stock `i` at `jth` day 
  *   @param  m int                 - Number of Stocks
  *   @param  n int                 - Number of Days
- *   @return _ transaction         - A single transaction that has most profit
+ *   @return   transaction         - A single transaction that has most profit
  */
 transaction Task2(vector<vector<int>> A, int m, int n)
 {

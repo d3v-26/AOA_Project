@@ -2,27 +2,27 @@
 
 using namespace std;
 
-// Structure that describes a Transaction
+/**
+ * Structure that describes a Transaction
+ * 
+ * @param stock  int - Index of the stock that corresponds to this Transaction.
+ * @param profit int - Profit of the Transaction.
+ * @param buy    int - Index of the `Day` that we `buy` the stock `stock`
+ * @param sell   int - Index of the `Day` that we `sell` the stock `stock`
+ */
 struct transaction
 {
-    /**
-     * @param stock  int - Index of the stock that corresponds to this Transaction.
-     * @param profit int - Profit of the Transaction.
-     * @param buy    int - Index of the `Day` that we `buy` the stock `stock`
-     * @param sell   int - Index of the `Day` that we `sell` the stock `stock`
-     */
     int stock, profit, buy, sell;
 };
 
 /**
- *   Recursive Algorithm to populate Min Value of a given stock to vector DP with its index being populated at BuyInx
- *   Computes Min Values of a given stock at a given date and stores the result in Vectors DP & BuyInx
+ *   Recursive Algorithm to populate Min Value of a given stock to vector DP with its index being populated at BuyInx.
+ *   Computes Min Values of a given stock at a given date and stores the result in Vectors DP & BuyInx.
  *
  *   @param  DP         vector<int>& - Reference Vector that will be populared by Min Values of prices for a given date
  *   @param  BuyInx     vector<int>& - Reference Vector that will be populared by index of those Min Values for a given date
  *   @param  A          vector<int>  - Vector containing prices of a stock
  *   @param  index      int          - Current Index
- *   @returns           void         - Nothing is returned
  */
 void initDP(vector<int> &DP, vector<int> &BuyInx, vector<int> A, int index)
 {
@@ -47,8 +47,8 @@ void initDP(vector<int> &DP, vector<int> &BuyInx, vector<int> A, int index)
 }
 
 /**
- *   Recursive implementation of ALG3 using Memoization that has time complexity in order of n
- *   Computes and returns  maximum profit for the given stock for given index
+ *   Recursive implementation of ALG3 using Memoization that has time complexity in order of n.
+ *   Computes and returns  maximum profit for the given stock for given index.
  *
  *   @param  A          vector<int> - Vector containing prices of a stock
  *   @param  DP         vector<int> - Vector that consists of Min Values for a given date
@@ -85,14 +85,14 @@ int DPMemoization(vector<int> A, vector<int> DP, vector<int> BuyInx, int index, 
 }
 
 /**
- *   Task 3 of the project. Time Complexity is in order of m*n.
+ *   Task 3A of the project. Time Complexity is in order of m*n.
  *   Computes and returns a transaction that yields maximum profit for all given stocks.
  *   It is the implementation of ALG3 of the programming project.
  *
  *   @param  A vector<vector<int>> - a `m x n` stock where A[i][j] = Price of stock `i` at `jth` day 
  *   @param  m int                 - Number of Stocks
  *   @param  n int                 - Number of Days
- *   @return _ transaction         - A single transaction that has most profit
+ *   @return   transaction         - A single transaction that has most profit
  */
 transaction Task3A(vector<vector<int>> A, int m, int n)
 {
@@ -136,7 +136,7 @@ int main()
         }
     }
 
-    transaction result = Task3A(A, m, n); // Get the result of Task2
+    transaction result = Task3A(A, m, n); // Get the result of Task3A
     
     // Print the output as a single line with three integers (Stock, BuyDay, SellDay) separated by a single space.
     cout << result.stock << " " << result.buy << " " << result.sell << endl; 

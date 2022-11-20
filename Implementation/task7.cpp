@@ -2,11 +2,25 @@
 
 using namespace std;
 
+/**
+ * Structure that describes a Transaction
+ * 
+ * @param stock  int - Index of the stock that corresponds to this Transaction.
+ * @param profit int - Profit of the Transaction.
+ * @param buy    int - Index of the `Day` that we `buy` the stock `stock`
+ * @param sell   int - Index of the `Day` that we `sell` the stock `stock`
+ */
 struct transaction
 {
     int stock, profit, buy, sell;
 };
 
+/**
+ *   Function to Calculate the sum of profit of the given transactions
+ *
+ *   @param   T          vector<transaction>  - Vector containing any number of transactions
+ *   @returns            int                  - Max profit in all those transactions
+ */
 int totalProfit(vector<transaction> T)
 {
     int profit = 0;
@@ -17,6 +31,11 @@ int totalProfit(vector<transaction> T)
     return profit;
 }
 
+/**
+ *   Function to print all the given transactions
+ *
+ *   @param   T          vector<transaction>  - Vector containing any number of transactions
+ */
 void print(vector<transaction> T)
 {
     for(auto t : T)
@@ -25,14 +44,38 @@ void print(vector<transaction> T)
     }
 }
 
+/**
+ *   Function to Compare two given transactions.
+ *   Returns True if t1 has buy date less than t2 otherwise false.
+ *
+ *   @param   t1          transaction  - A single transaction
+ *   @param   t2          transaction  - A single transaction
+ * 
+ *   @returns             bool         - boolean variable answering if T1 comes before T2?
+ */
 bool compare(transaction t1, transaction t2)
 {
     if(t1.buy <= t2.buy) return true;
     else return false;
 }
 
+/**
+ *   BruteForce2n is the brute force algorithm for Task7. Its time complexity is in order of m*2^n.
+ *   Computes and returns those transactions that yield max profit for given stocks m and given days n and given cooldown c.
+ *   Here transactions are not returned in sorted order.
+ * 
+ *   @param  A          vector<vector<int>> - a `m x n` stock where A[i][j] = Price of stock `i` at `jth` day 
+ *   @param  current    int                 - index of current element
+ *   @param  S          int                 - index of current stock that is bought
+ *   @param  D          int                 - index of current day that was stock S bought on.
+ *   @param  buy        bool                - Boolean falg that indicates can we buy or not
+ *   @param  c          int                 - Cooldown
+ *   @return            vector<transaction> - A vector of transactions that yields max profit
+ */
 vector<transaction> BruteForce2n(vector<vector<int>> A, int current, int S, int D, bool buy, int c)
 {
+    // if index is out of range we've reached the base element, we will initialize a empty vector to return it.
+    // And then in super problems we will push transactions on this vector as we go.
     if(current >= A[0].size())
     {
         vector<transaction> T;
@@ -78,14 +121,37 @@ vector<transaction> BruteForce2n(vector<vector<int>> A, int current, int S, int 
     
 }
 
+/**
+ *   Task 7 of the programming project. Its time complexity is in order of m*2^n.
+ *   Computes and returns those transactions that yield max profit for given stocks m and given days n and given cooldown c.
+ *
+ *   @param  A vector<vector<int>> - a `m x n` stock where A[i][j] = Price of stock `i` at `jth` day 
+ *   @param  m int                 - Number of Stocks
+ *   @param  n int                 - Number of Days
+ *   @param  c int                 - Cooldown
+ *   @return   vector<transaction> - A vector of transactions that yields max profit
+ */
 vector<transaction> Task7(vector<vector<int>> A, int m, int n, int c)
 {
+    // Call the recursive solution algorithm
     vector<transaction> result = BruteForce2n(A, 0, -1, -1, true, c);
+
+    // Sort the transactions in order of their buy date.
     sort(result.begin(), result.end(), compare);
+
+    // Return the result.
     return result;
 }
 
-int main() {
+// Main method
+int main()
+{
+    /**
+     *  Get the inputs `k`, `m`, `n` & `A` which are specified as below:
+     *  k    - Line 1 consists of one integer k.
+     *  m, n - Line 2 consists of two integers m & n separated by one space character.
+     *  A    - Next m lines each contains of n integers (prices for n days) separated by a single space.
+     */
     int m, n, c;
     cin >> c >> m >> n;
 
@@ -98,12 +164,13 @@ int main() {
         }
     }
 
-    vector<transaction> result = Task7(A, m, n, c);
+    // Get the result of Task6A
+    vector<transaction> transactions = Task7(A, m, n, c);
 
-    for(auto r : result)
+    // Print the result
+    for(auto t : transactions)
     {
-        cout<<r.stock<<" "<<r.buy<<" "<<r.sell<<endl;
+        cout<<t.stock<<" "<<t.buy<<" "<<t.sell<<endl;
     }
-
     return 0;
 }
