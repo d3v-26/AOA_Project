@@ -1,0 +1,41 @@
+(base) chintanacharya@Chintans-MacBook-Pro Implementation % ./task1.exe
+Enter name: N1
+0.086752 seconds
+9 14 445
+(base) chintanacharya@Chintans-MacBook-Pro Implementation % ./task1.exe
+Enter name: N2
+0.289373 seconds
+16 146 498
+(base) chintanacharya@Chintans-MacBook-Pro Implementation % ./task1.exe
+Enter name: N3
+0.629064 seconds
+45 615 2473
+(base) chintanacharya@Chintans-MacBook-Pro Implementation % ./task1.exe
+Enter name: N4
+1.10771 seconds
+1 365 3399
+(base) chintanacharya@Chintans-MacBook-Pro Implementation % ./task1.exe
+Enter name: N5
+1.72382 seconds
+3 87 3401
+(base) chintanacharya@Chintans-MacBook-Pro Implementation % ./task1.exe
+Enter name: M1
+0.129156 seconds
+5 927 1407
+(base) chintanacharya@Chintans-MacBook-Pro Implementation % ./task1.exe
+Enter name: M2
+0.226503 seconds
+8 1136 1333
+(base) chintanacharya@Chintans-MacBook-Pro Implementation % ./task1.exe
+Enter name: M3
+0.335967 seconds
+8 863 1116
+(base) chintanacharya@Chintans-MacBook-Pro Implementation % ./task1.exe
+Enter name: M4
+0.451744 seconds
+32 257 432
+(base) chintanacharya@Chintans-MacBook-Pro Implementation % ./task1.exe
+Enter name: M5
+0.560233 seconds
+12 1333 1358
+(base) chintanacharya@Chintans-MacBook-Pro Implementation % 

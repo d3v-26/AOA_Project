@@ -187,9 +187,11 @@ int main()
     vector<transaction> result = Task4(A, m, n, k);
 
     // Print the result.
+    int count = 0;
     for(auto r : result)
     {
-        cout<<r.stock<<" "<<r.buy<<" "<<r.sell<<endl;
+        cout<<++count<<".) ";
+        cout<<"Stock: "<<r.stock<<" "<<"Buy Day: "<<r.buy<<" "<<"Sell Day: "<<r.sell<<endl;
     }
 
     return 0;

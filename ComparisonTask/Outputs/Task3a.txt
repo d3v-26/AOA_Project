@@ -1,0 +1,62 @@
+(base) chintanacharya@Chintans-MacBook-Pro Implementation % g++ -std=c++11 -o task3a.exe task3a.cpp
+(base) chintanacharya@Chintans-MacBook-Pro Implementation % ./task3a.exe 
+Enter name: N1
+N : 1000
+M : 50
+1.0507 seconds
+9 14 445
+(base) chintanacharya@Chintans-MacBook-Pro Implementation % ./task3a.exe
+Enter name: N2
+N : 2000
+M : 50
+4.40612 seconds
+16 146 498
+(base) chintanacharya@Chintans-MacBook-Pro Implementation % ./task3a.exe
+Enter name: N3
+N : 3000
+M : 50
+9.93531 seconds
+45 615 2473
+(base) chintanacharya@Chintans-MacBook-Pro Implementation % ./task3a.exe
+Enter name: N4
+N : 4000
+M : 50
+17.0262 seconds
+1 365 3399
+(base) chintanacharya@Chintans-MacBook-Pro Implementation % ./task3a.exe
+Enter name: N5
+N : 5000
+M : 50
+28.4047 seconds
+3 87 3401
+(base) chintanacharya@Chintans-MacBook-Pro Implementation % ./task3a.exe
+Enter name: M1
+N : 2000
+M : 20
+1.76794 seconds
+5 927 1407
+(base) chintanacharya@Chintans-MacBook-Pro Implementation % ./task3a.exe
+Enter name: M2
+N : 2000
+M : 40
+3.46832 seconds
+8 1136 1333
+(base) chintanacharya@Chintans-MacBook-Pro Implementation % ./task3a.exe
+Enter name: M3
+N : 2000
+M : 60
+5.49709 seconds
+8 863 1116
+(base) chintanacharya@Chintans-MacBook-Pro Implementation % ./task3a.exe
+Enter name: M4
+N : 2000
+M : 80
+6.98939 seconds
+32 257 432
+(base) chintanacharya@Chintans-MacBook-Pro Implementation % ./task3a.exe
+Enter name: M5
+N : 2000
+M : 100
+8.6529 seconds
+12 1333 1358
+(base) chintanacharya@Chintans-MacBook-Pro Implementation % 

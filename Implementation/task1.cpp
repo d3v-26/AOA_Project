@@ -92,8 +92,35 @@ int main()
         }
     }
 
-    transaction result = Task1(A, m, n); // Get the result of Task1
+    /**
+      * This block of code was written for the comparison task.
+      * It takes the file name as input and reads the input from that test case file.
+      * It outputs the time taken by the code to run and the output of the test case.
+      */
+
+    // string name;
+    // cout<<"Enter name: ";
+    // cin>>name;
+    // ifstream infile;
+    // infile.open("../ComparisonTask/TestCases/" + name + ".txt");
+    // infile >> m >> n;
+    // vector<vector<int>> A(m, vector<int> (n, 0));
+    // for (int i = 0; i < m; i++) 
+    // {
+    //     for (int j = 0; j < n; j++) 
+    //     {
+    //         infile >> A[i][j];
+    //     }
+    // }
+    // clock_t t;
+    // t = clock();
+    // transaction result = Task1(A, m, n); // Get the result of Task1
+    // t = clock() - t;
+    // cout<<(float)t/CLOCKS_PER_SEC<<" seconds"<<endl;
     
+
+    transaction result = Task1(A, m, n); // Get the result of Task1
+
     // Print the output as a single line with three integers (Stock, BuyDay, SellDay) separated by a single space.
-    cout << result.stock << " " << result.buy << " " << result.sell << endl; 
+    cout <<result.stock << " " << result.buy << " " << result.sell << endl; 
 }
