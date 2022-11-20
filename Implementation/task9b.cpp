@@ -43,20 +43,8 @@ void print(vector<transaction> T)
     }
 }
 
-void p(vector<vector<int>> A)
-{
-    for(int i = 0; i < A.size(); i++)
-    {
-        for(int j = 0; j < A[0].size(); j++)
-        {
-            cout << A[i][j] << " ";
-        }
-        cout << endl;
-    }
-}
-
 /**
- *   Task 8 of the programming project. Its time complexity is in order of m*n^2.
+ *   Task 9B of the programming project. Its time complexity is in order of m*n.
  *   Computes and returns those transactions that yield max profit for given stocks m and given days n and given cooldown c.
  *
  *   @param  A vector<vector<int>> - a `m x n` stock where A[i][j] = Price of stock `i` at `jth` day 
@@ -79,20 +67,32 @@ vector<transaction> Task9B(vector<vector<int>> &A, int m, int n, int c)
         // So we will build solution like its going from top to bottom and then to right.
         for(int i = 0; i < m; i++)
         {
+            // Calculate the current difference i.e. profit if we buy today
             int currentDiff = DP[m-1][max(0, j-c-2)] - A[i][j-1];
+
+            // If it is greater than any of the previous stock than store it.
             if(currentDiff >= DiffSoFar[i][0])
             {
                 DiffSoFar[i][0] = currentDiff;
                 DiffSoFar[i][1] = j-1;
             }
 
+            // Now we have three choices
             int current = DP[i][j];
+
+            // What is the profit of previous day?
             int previousDayProfit = DP[i][j-1];
+
+            // What is the profit of previous stock?
             int previousStockProfit = i == 0 ? 0 : DP[i-1][j];
+
+            // What is the profit if we sell today?
             int profitIfWeBuy = A[i][j] + DiffSoFar[i][0];
 
+            // Our current solution is Max of this three.
             DP[i][j] = max(current, max(previousDayProfit, max(previousStockProfit, profitIfWeBuy)));
 
+            // If we did sell stock today, store its buy index in Buy array
             if(current != DP[i][j])
             {
                 Buy[i][j] = DiffSoFar[i][1];
@@ -126,9 +126,7 @@ vector<transaction> Task9B(vector<vector<int>> &A, int m, int n, int c)
 
     // Sort the result in order of their buy date
     sort(result.begin(), result.end(), compare);
-    p(DP);
-    cout<<endl;
-    p(Buy);
+    
     // Return the result
     return result;
 }
@@ -137,8 +135,8 @@ vector<transaction> Task9B(vector<vector<int>> &A, int m, int n, int c)
 int main()
 {
     /**
-     *  Get the inputs `k`, `m`, `n` & `A` which are specified as below:
-     *  k    - Line 1 consists of one integer k.
+     *  Get the inputs `c`, `m`, `n` & `A` which are specified as below:
+     *  c    - Line 1 consists of one integer c.
      *  m, n - Line 2 consists of two integers m & n separated by one space character.
      *  A    - Next m lines each contains of n integers (prices for n days) separated by a single space.
      */
@@ -154,7 +152,7 @@ int main()
         }
     }
 
-    // Get the result of Task8
+    // Get the result of Task9B
     vector<transaction> transactions = Task9B(A, m, n, c);
 
     // Print the result
@@ -164,4 +162,3 @@ int main()
     }
     return 0;
 }
-
