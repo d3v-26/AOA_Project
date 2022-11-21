@@ -1,0 +1,61 @@
+(base) chintanacharya@Chintans-MacBook-Pro Implementation % ./task3b.exe
+Enter name: N1
+N : 1000
+M : 50
+0.001807 seconds
+9 14 445
+(base) chintanacharya@Chintans-MacBook-Pro Implementation % ./task3b.exe
+Enter name: N2
+N : 2000
+M : 50
+0.00282 seconds
+16 146 498
+(base) chintanacharya@Chintans-MacBook-Pro Implementation % ./task3b.exe
+Enter name: N3
+N : 3000
+M : 50
+0.00354 seconds
+45 615 2473
+(base) chintanacharya@Chintans-MacBook-Pro Implementation % ./task3b.exe
+Enter name: N4
+N : 4000
+M : 50
+0.004436 seconds
+1 365 3399
+(base) chintanacharya@Chintans-MacBook-Pro Implementation % ./task3b.exe
+Enter name: N5
+N : 5000
+M : 50
+0.005031 seconds
+3 87 3401
+(base) chintanacharya@Chintans-MacBook-Pro Implementation % ./task3b.exe
+Enter name: M1
+N : 2000
+M : 20
+0.001628 seconds
+5 927 1407
+(base) chintanacharya@Chintans-MacBook-Pro Implementation % ./task3b.exe
+Enter name: M2
+N : 2000
+M : 40
+0.001539 seconds
+8 1136 1333
+(base) chintanacharya@Chintans-MacBook-Pro Implementation % ./task3b.exe
+Enter name: M3
+N : 2000
+M : 60
+0.003172 seconds
+8 863 1116
+(base) chintanacharya@Chintans-MacBook-Pro Implementation % ./task3b.exe
+Enter name: M4
+N : 2000
+M : 80
+0.003698 seconds
+32 257 432
+(base) chintanacharya@Chintans-MacBook-Pro Implementation % ./task3b.exe
+Enter name: M5
+N : 2000
+M : 100
+0.004361 seconds
+12 1333 1358
+(base) chintanacharya@Chintans-MacBook-Pro Implementation % 

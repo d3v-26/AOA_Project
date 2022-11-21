@@ -1,0 +1,272 @@
+(base) chintanacharya@Chintans-MacBook-Pro Implementation % ./task6b.exe
+Enter name: N111
+N : 500
+M : 50
+K : 10
+0.00531 seconds
+38 19 23
+40 46 57
+21 58 70
+11 77 98
+35 104 192
+34 234 255
+32 297 318
+47 324 370
+24 404 438
+43 456 491
+(base) chintanacharya@Chintans-MacBook-Pro Implementation % ./task6b.exe
+Enter name: N222
+N : 1000
+M : 50
+K : 10
+0.010021 seconds
+20 5 24
+33 119 120
+44 149 258
+21 280 283
+14 291 350
+40 389 426
+38 540 612
+20 699 853
+22 856 893
+13 963 992
+(base) chintanacharya@Chintans-MacBook-Pro Implementation % ./task6b.exe
+Enter name: N333
+N : 1500
+M : 50
+K : 10
+0.013758 seconds
+24 154 412
+9 489 615
+7 615 724
+13 727 741
+25 742 749
+45 807 933
+43 963 1158
+7 1166 1210
+30 1260 1346
+35 1364 1426
+(base) chintanacharya@Chintans-MacBook-Pro Implementation % ./task6b.exe
+Enter name: N444
+N : 2000
+M : 50
+K : 10
+0.016883 seconds
+48 208 407
+41 445 740
+46 797 898
+39 1090 1127
+20 1128 1206
+28 1256 1338
+37 1386 1391
+2 1439 1485
+19 1643 1766
+19 1806 1934
+(base) chintanacharya@Chintans-MacBook-Pro Implementation % ./task6b.exe
+Enter name: N555
+N : 2500
+M : 50
+K : 10
+0.017471 seconds
+6 183 257
+12 286 289
+25 308 466
+49 643 801
+24 951 1118
+33 1170 1515
+1 1665 1738
+12 1789 2037
+10 2188 2313
+0 2336 2465
+(base) chintanacharya@Chintans-MacBook-Pro Implementation % ./task6b.exe
+Enter name: M111
+N : 1500
+M : 20
+K : 10
+0.008589 seconds
+11 57 188
+10 254 296
+11 368 577
+15 597 627
+6 670 811
+7 917 985
+14 1026 1106
+18 1199 1243
+8 1308 1310
+5 1332 1483
+(base) chintanacharya@Chintans-MacBook-Pro Implementation % ./task6b.exe
+Enter name: M222
+N : 1500
+M : 40
+K : 10
+0.012738 seconds
+8 35 55
+2 88 174
+12 211 217
+38 237 323
+36 463 468
+12 536 575
+25 605 795
+4 865 1090
+29 1130 1195
+36 1232 1422
+(base) chintanacharya@Chintans-MacBook-Pro Implementation % ./task6b.exe
+Enter name: M333
+N : 1500
+M : 60
+K : 10
+0.01029 seconds
+18 138 149
+22 153 328
+52 338 549
+35 569 618
+16 650 929
+51 969 984
+15 1073 1087
+57 1097 1100
+57 1143 1303
+11 1324 1387
+(base) chintanacharya@Chintans-MacBook-Pro Implementation % ./task6b.exe
+Enter name: M444
+N : 1500
+M : 80
+K : 10
+0.019111 seconds
+10 13 110
+34 237 346
+37 370 435
+2 715 731
+4 741 756
+15 831 871
+35 875 940
+60 1017 1107
+10 1116 1130
+71 1298 1398
+(base) chintanacharya@Chintans-MacBook-Pro Implementation % ./task6b.exe
+Enter name: M555
+N : 1500
+M : 100
+K : 10
+0.021469 seconds
+34 49 118
+93 298 362
+90 402 460
+93 556 609
+34 612 639
+82 649 701
+25 751 957
+44 961 1022
+75 1043 1244
+9 1331 1452
+(base) chintanacharya@Chintans-MacBook-Pro Implementation % ./task6b.exe
+Enter name: K111
+N : 1500
+M : 50
+K : 5
+0.005207 seconds
+2 416 557
+27 566 581
+20 784 951
+35 982 1101
+22 1361 1489
+(base) chintanacharya@Chintans-MacBook-Pro Implementation % ./task6b.exe
+Enter name: K22
+N : 0
+M : 0
+K : 0
+zsh: segmentation fault  ./task6b.exe
+(base) chintanacharya@Chintans-MacBook-Pro Implementation % ./task6b.exe
+Enter name: K222
+N : 1500
+M : 50
+K : 10
+0.013525 seconds
+13 63 166
+23 167 241
+16 346 563
+30 569 576
+48 638 822
+14 829 851
+48 921 940
+44 1099 1135
+9 1135 1271
+8 1329 1442
+(base) chintanacharya@Chintans-MacBook-Pro Implementation % ./task6b.exe
+Enter name: K333
+N : 1500
+M : 50
+K : 15
+0.020049 seconds
+18 102 117
+23 154 170
+19 236 433
+24 487 592
+20 592 616
+4 620 721
+15 746 844
+46 887 943
+38 951 1048
+40 1084 1104
+3 1104 1161
+10 1238 1270
+23 1350 1355
+23 1422 1451
+27 1459 1486
+(base) chintanacharya@Chintans-MacBook-Pro Implementation % ./task6b.exe
+Enter name: K444
+N : 1500
+M : 50
+K : 20
+0.026792 seconds
+38 27 119
+6 131 309
+1 310 332
+12 406 430
+32 457 520
+0 528 571
+15 652 662
+48 721 773
+28 794 816
+2 916 935
+17 943 1021
+39 1050 1069
+31 1089 1133
+17 1163 1195
+16 1224 1225
+38 1307 1336
+11 1353 1373
+44 1388 1392
+11 1426 1453
+42 1485 1492
+(base) chintanacharya@Chintans-MacBook-Pro Implementation % ./task6b.exe
+Enter name: K555
+N : 1500
+M : 50
+K : 25
+0.030957 seconds
+21 38 73
+15 90 129
+17 135 226
+20 262 321
+16 345 364
+29 392 401
+40 420 453
+38 455 495
+37 498 530
+44 534 676
+34 700 734
+33 749 752
+25 760 774
+41 828 900
+42 925 966
+22 1000 1039
+15 1066 1085
+26 1149 1171
+48 1185 1205
+21 1226 1288
+39 1293 1310
+47 1330 1350
+17 1364 1385
+22 1432 1450
+36 1454 1487
+(base) chintanacharya@Chintans-MacBook-Pro Implementation %         

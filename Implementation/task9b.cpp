@@ -152,6 +152,35 @@ int main()
         }
     }
 
+    /**
+      * This block of code was written for the comparison task.
+      * It takes the file name as input and reads the input from that test case file.
+      * It outputs the time taken by the code to run and the output of the test case.
+      */
+
+    // string name;
+    // cout<<"Enter name: ";
+    // cin>>name;
+    // ifstream infile;
+    // infile.open("../ComparisonTask/TestCasesPlot67/Task89/" + name + ".txt");
+    // infile >> c >> m >> n;
+    // cout<< "N : " << n << endl;
+    // cout<< "M : " << m << endl;
+    // cout<< "C : " << c << endl;
+    // vector<vector<int>> A(m, vector<int> (n, 0));
+    // for (int i = 0; i < m; i++) 
+    // {
+    //     for (int j = 0; j < n; j++) 
+    //     {
+    //         infile >> A[i][j];
+    //     }
+    // }
+    // clock_t t;
+    // t = clock();
+    // vector<transaction> transactions = Task9B(A, m, n, c);
+    // t = clock() - t;
+    // cout<<(float)t/CLOCKS_PER_SEC<<" seconds"<<endl;
+
     // Get the result of Task9B
     vector<transaction> transactions = Task9B(A, m, n, c);
 

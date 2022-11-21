@@ -119,7 +119,7 @@ int main()
     // }
     // clock_t t;
     // t = clock();
-    // transaction result = Task2(A, m, n); // Get the result of Task1
+    // transaction result = Task2(A, m, n); // Get the result of Task2
     // t = clock() - t;
     // cout<<(float)t/CLOCKS_PER_SEC<<" seconds"<<endl;
     
